@@ -197,8 +197,6 @@ export const me = async (request, response) => {
   try {
     const email = request.user;
 
-    console.log(request.user);
-
     const user = await Usuario.findOne({ email }).lean();
 
     if (!user) {

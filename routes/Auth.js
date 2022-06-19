@@ -8,15 +8,11 @@ import jwt from "jsonwebtoken";
 const JWT_SECRET = "f1naancial!";
 
 import {
-  apple,
-  currentUser,
   getAccountStatus,
   getUserById,
-  google,
   login,
   makeInstructor,
   me,
-  refresh,
   register,
   sendEmailTest,
   sessions,
@@ -60,24 +56,14 @@ function checkAuthMiddleware(request, response) {
   }
 }
 
-router.put("/update/:userId/:key/:value", update);
-
 router.post("/session", sessions);
-
-router.get("/me", checkAuthMiddleware, me);
 
 router.get("/user/:userId", getUserById);
 
 router.post("/signup", register);
 
-router.post("/google", register);
-
-router.post("/apple", register);
-
 router.post("/signin", login);
 
 router.get("/email-test", sendEmailTest);
 
-router.post("/make-instructor", makeInstructor);
-router.post("/get-account-status", getAccountStatus);
 export default router;

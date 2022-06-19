@@ -38,21 +38,3 @@ export const checkAuthMiddleware = async (request, response, next) => {
     });
   }
 };
-
-export const isInstructor = async (request, response, next) => {
-  try {
-    const user = await Usuario.findOne({ email: request.user });
-
-    if (!user.role.includes("Instructor")) {
-      response.sendStatus(403);
-    } else {
-      next();
-    }
-  } catch (err) {
-    return response.status(401).json({
-      error: true,
-      code: "token.invalid",
-      message: "Token invalid.",
-    });
-  }
-};
